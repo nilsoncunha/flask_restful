@@ -12,7 +12,7 @@ Base.query = db_session.query_property()
 class Pessoas(Base):
     __tablename__ = 'pessoas'
     id = Column(Integer, primary_key=True)
-    nome = Column(String(40), index=True)
+    nome = Column(String(40), index=True, nullable=False)
     idade = Column(Integer)
 
     def __repr__(self):
@@ -30,12 +30,13 @@ class Pessoas(Base):
 class Atividades(Base):
     __tablename__ = 'atividades'
     id = Column(Integer, primary_key=True)
-    nome = Column(String(80))
+    tarefa = Column(String(80), nullable=False)
+    status = Column(String(10), nullable=False)
     pessoa_id = Column(Integer, ForeignKey('pessoas.id'))
     pessoa = relationship('Pessoas')
 
     def __repr__(self):
-        return f'id: {self.id} - nome: {self.nome} - pessoa: {self.pessoa}'
+        return f'id: {self.id} - status: {self.status} - tarefa: {self.tarefa} - pessoa: {self.pessoa}'
 
     def save(self):
         db_session.add(self)
