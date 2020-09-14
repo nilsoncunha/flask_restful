@@ -1,2 +1,2 @@
 # flask_restful
-Exemplo de aplicação com a extensão flask-restful
+Exemplo de aplicação com a extensão flask-restful utilizando sqlalchemy
